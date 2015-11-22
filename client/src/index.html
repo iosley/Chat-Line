@@ -1,0 +1,63 @@
+<html ng-app="chatApp">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="vendor/vendor.css" rel="stylesheet" type="text/css">
+	<script src="vendor/angular.js"></script>
+</head>
+<body ng-controller="chatController">
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+							<i class="fa fa-fw fa-comments"></i>Chat Line</h3>
+						</div>
+					<div class="panel-body" style="height: 65%">
+						<p ng-repeat="message in messages">
+							<span>{{message.username}}: </span>
+							{{message.msg}}
+						</p>
+					</div>
+					<div class="panel-footer">
+						<form ng-submit="sendMessage()" class="form-inline" role="form">
+							<div class="form-group">
+								<legend for="mensagem">Mensagem: </legend>
+								<input ng-model="message.msg" type="text" class="form-control" id="mensagem">
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">Enviar</button>
+							</div>
+						</form>
+					</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="panel panel-primary" style="height: 65%">
+						<div class="panel-heading">
+							<h1 class="panel-title">
+							<i class="fa fa-fw fa-group"></i>Contatos</h1>
+						</div>
+						<div class="panel-body">
+							<ul class="lead list-group text-warning">
+								<li class="list-group-item btn">
+									<input type="radio" id="radioAllUsers" ng-model="message.toUser" value="" ng-checked="true">
+									<label for="radioAllUsers" class="btn">Todos</label>
+								</li>
+								<li ng-repeat="user in users" class="list-group-item btn">
+									<input type="radio" id="radio{{user}}" ng-model="message.toUser" value="{{user}}">
+									<label for="radio{{user}}" class="btn">{{user}}</label>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="vendor/vendor.js"></script>
+<script src="js/app.js"></script>
+</html>

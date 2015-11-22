@@ -1,0 +1,54 @@
+{
+	"name": "chat",
+	"description": "Chat para aula do nonilton",
+	"main": "server.js",
+	"authors": [
+		"Iosley Carlos <iosleydrive@gmail.com>"
+	],
+	"license": "MIT",
+	"keywords": [
+		"chat",
+		"socket",
+		"node",
+		"angular"
+	],
+	"moduleType": [],
+	"homepage": "",
+	"private": true,
+	"dependencies": {
+		"angular"          : "angularjs#~1.4.7",
+		"bootstrap"        : "~3.3.5",
+		"socket.io-client" : "~1.3.7",
+		"angular-socket-io": "~0.7.0",
+		"font-awesome"     : "~4.4.0",
+		"angular-bootstrap": "~0.14.3",
+		"typopro-web"      : "3.4.1"
+	},
+	"install": {
+		"path": {
+			"js"   : "client/src/vendor/{name}/",
+			"css"  : "client/src/vendor/{name}/",
+			"scss" : "client/src/vendor/{name}/",
+			"less" : "client/src/vendor/{name}/",
+			"eot"  : "client/src/vendor/{name}/",
+			"svg"  : "client/src/vendor/{name}/",
+			"ttf"  : "client/src/fonts/",
+			"woff" : "client/src/fonts/",
+			"woff2": "client/src/fonts/",
+			"otf"  : "client/src/fonts/"
+		},
+		"sources": {
+			"socket.io-client" : "bower_components/socket.io-client/socket.io.js",
+			"angular-socket-io": "bower_components/angular-socket-io/socket.js",
+			"bootstrap": [
+				"bower_components/bootstrap/dist/css/bootstrap.css",
+				"bower_components/bootstrap/dist/js/bootstrap.js"
+			],
+			"font-awesome": [
+				"bower_components/font-awesome/css/font-awesome.css",
+				"bower_components/font-awesome/scss/font-awesome.scss",
+				"bower_components/font-awesome/fonts/*"
+			]
+		}
+	}
+}
