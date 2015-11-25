@@ -37,10 +37,7 @@ io.on('connection', function onConnection(socket) {
       username = user;
       socket.join(user);
       socket.broadcast.emit('add-user', user);
-      // io.emit('add-user', user);
-      // console.log(users);
       users.push(user);
-      // console.log(users);
     } else {
       socket.emit('prompt-username', {
         message: 'Nome de usuario já existe, escolha outro.'

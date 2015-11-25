@@ -5,7 +5,16 @@ var concat     = require('gulp-concat');
 var minifyCss  = require('gulp-minify-css');
 var sass       = require('gulp-sass')
 var notify     = require('gulp-notify');
+var imagemin   = require('gulp-imagemin');
+var gulpCopy   = require('gulp-copy');
 
+
+gulp.task('compress-img', function() {
+  gulp.src('./client/src/img/**/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('./client/dist/img/'))
+    .pipe(notify('Done: compress-img'));
+});
 
 gulp.task('minify-js', function() {
   gulp.src('./client/src/js/**/*.js')
@@ -49,9 +58,7 @@ gulp.task('minify-html', function() {
 
 gulp.task('minify-vendor-css', function() {
   gulp.src([
-   './client/src/vendor/**/*.css',
-   './client/src/scss/bootstrap.css',
-   '!./bower_components/bootstrap/dist/css/bootstrap-theme.css'
+   './client/src/vendor/**/*.css'
   ])
     .pipe(concat('vendor.css'))
     .pipe(minifyCss())
@@ -61,8 +68,7 @@ gulp.task('minify-vendor-css', function() {
 
 gulp.task('minify-css', function() {
   gulp.src([
-    './client/src/scss/**/*.css',
-    '!./client/src/scss/bootstrap.css'
+    './client/src/scss/**/*.css'
   ])
     .pipe(concat('styles.css'))
     .pipe(minifyCss())
@@ -72,16 +78,18 @@ gulp.task('minify-css', function() {
 
 gulp.task('fonts', function() {
   gulp.src('./client/src/fonts/*')
-    .pipe(gulp.dest('./client/dist/fonts/'))
+    .pipe(gulpCopy('./client/dist/fonts/'))
     .pipe(notify('Tasks de fonts finalizadas.'));
 });
 
 
-gulp.task('chat', ['minify-html', 'minify-js', 'minify-vendor-js', 'minify-vendor-css', 'minify-css', 'fonts']);
+gulp.task('chat', ['minify-html', 'minify-js', 'minify-vendor-js', 'minify-vendor-css', 'minify-css', 'fonts', 'compress-img']);
 
 gulp.task('default', ['chat']);
 
 gulp.task('watch', function() {
+  gulp.watch('./client/src/img/**/*', ['compress-img']);
+
   gulp.watch([
     './client/src/*.html',
     './client/src/partials/**/*.html'
